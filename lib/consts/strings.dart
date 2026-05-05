@@ -1,5 +1,4 @@
-class AppStrings {
-  final baseUrl = "";
-  const charactersScreen = '/';
-  const characterDetailsScreen = '/character_details';
-}
+const String baseUrl = 'https://rickandmortyapi.com/api/';
+const String charactersEndpoint = 'character';
+const charactersScreen = '/';
+const characterDetailsScreen = '/character_details';
