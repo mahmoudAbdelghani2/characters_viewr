@@ -1,13 +1,19 @@
+import 'package:bloc_test/app_router.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp(appRouts: AppRouts()));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  final AppRouts appRouts;
+
+  const MyApp({super.key, required this.appRouts});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(debugShowCheckedModeBanner: false, home: Scaffold());
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      onGenerateRoute: appRouts.generateRoute,
+    );
   }
 }
