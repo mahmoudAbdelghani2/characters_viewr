@@ -21,7 +21,8 @@ class CharactersServices {
     try {
       Response response = await dio.get(charactersEndpoint);
       print(response.data.toString());
-      return response.data;
+      final data = response.data['results'];
+      return data;
     } catch (e) {
       print("Error : $e");
       return [];
