@@ -65,7 +65,7 @@ class _CharactersScreenState extends State<CharactersScreen> {
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
-          child: CharacterWidget(),
+          child: CharacterWidget(character: allCharacters[index]),
         );
       },
     );
