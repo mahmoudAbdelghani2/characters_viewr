@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 
 import 'package:bloc_test/consts/strings.dart';
-import 'package:bloc_test/data/models/characters_model.dart';
 import 'package:dio/dio.dart';
 
 class CharactersServices {

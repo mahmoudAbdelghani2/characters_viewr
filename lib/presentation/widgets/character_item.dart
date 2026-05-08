@@ -23,7 +23,7 @@ class CharacterWidget extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 15, vertical: 10),
           alignment: Alignment.bottomCenter,
           child: Text(
-            "{$character.name}",
+            character.name,
             style: TextStyle(
               height: 1.6,
               fontSize: 15,
