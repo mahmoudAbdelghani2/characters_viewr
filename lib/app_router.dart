@@ -1,5 +1,6 @@
 import 'package:bloc_test/consts/strings.dart';
 import 'package:bloc_test/cubit/characters_cubit.dart';
+import 'package:bloc_test/data/models/characters_model.dart';
 import 'package:bloc_test/data/repo/characters_repo.dart';
 import 'package:bloc_test/data/services/characters_services.dart';
 import 'package:bloc_test/presentation/screens/characters_details_screen.dart';
@@ -25,10 +26,11 @@ class AppRouts {
           ),
         );
       case characterDetailsScreen:
+        final character = settings.arguments as CharacterModel;
         return MaterialPageRoute(
           builder: (_) => BlocProvider(
             create: (_) => CharactersCubit(charactersRepo: charactersRepo),
-            child: CharactersDetailsScreen(),
+            child: CharactersDetailsScreen(characterModel: character),
           ),
         );
     }
