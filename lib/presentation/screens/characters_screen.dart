@@ -5,6 +5,8 @@ import 'package:bloc_test/presentation/widgets/appbar_widget.dart';
 import 'package:bloc_test/presentation/widgets/character_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_offline/flutter_offline.dart';
+import 'package:lottie/lottie.dart';
 
 class CharactersScreen extends StatefulWidget {
   const CharactersScreen({super.key});
@@ -106,6 +108,31 @@ class _CharactersScreenState extends State<CharactersScreen> {
     );
   }
 
+  Widget _buildNoInternet() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/lottie/no_internet_animation.gif',
+            fit: BoxFit.contain,
+            height: 200,
+            width: 200,
+          ),
+          SizedBox(height: 10),
+          Text(
+            "No Internet Connection ....",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -132,7 +159,20 @@ class _CharactersScreenState extends State<CharactersScreen> {
           });
         },
       ),
-      body: buildBlocWidget(),
+      body: OfflineBuilder(
+        connectivityBuilder:
+            (
+              BuildContext context,
+              List<ConnectivityResult> connectivity,
+              Widget child,
+            ) {
+              final bool connected = !connectivity.contains(
+                ConnectivityResult.none,
+              );
+              return connected ? buildBlocWidget() : _buildNoInternet();
+            },
+        child: showLoadingIndecator(),
+      ),
     );
   }
 }
